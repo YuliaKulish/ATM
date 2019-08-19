@@ -1,0 +1,37 @@
+/**Шестое домашнее задание в рамках курса Java для  начинающих.
+ * Проект банкомат-терминал.
+ * Класс описывает сущность "картоприемник", его свойства и валидацию имеющихся данных, в этом случае.
+ * @author Kulish Yulia
+ * @version 1.0
+ */
+public class CardReader {
+    /** Наличие чипа
+     */
+    private boolean chip;
+    /**Наличие магнитной ленты
+     */
+    private boolean magneticStrip;
+
+    /**Идентификация карты с помощью чипа или карты
+     * изначально проверка осуществляется по наличию чипа
+     * @return ошибка в случае отсутствия магнитной ленты и чипа либо же невозможномти их считать картоприемником
+     */
+    public boolean cardIdentification () {
+        if (chip == true) {
+            chipIdentification();
+        } else if (magneticStrip == true) {
+            magneticStripIdentification();
+        }
+        return false;
+    }
+
+    /**Идентификация с помощью чипа
+     */
+    public void chipIdentification () {
+    }
+
+    /**Идентификация с помощью магнитной ленты
+     */
+    public void magneticStripIdentification () {
+    }
+}
