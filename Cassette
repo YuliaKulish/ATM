@@ -1,0 +1,63 @@
+/**Шестое домашнее задание в рамках курса Java для  начинающих.
+ * Проект банкомат-терминал.
+ * Класс описывает сущность "касета", его свойства и валидацию имеющихся данных, в этом случае.
+ * @author Kulish Yulia
+ * @version 1.0
+ */
+public class Cassette {
+    /**Номинал купюры 50 грн
+     */
+    static int faceValue50 = 50;
+    /**Номинал купюры 100 грн
+     */
+    static int faceValue100 = 100;
+    /**Номинал купюры 200 грн
+     */
+    static int faceValue200 = 200;
+    /**Номинал купюры 500 грн
+     */
+    static int faceValue500 = 500;
+
+
+    /**Перечисление касет и проверка количества купюр в касете с подсчетом общей суммы
+     */
+        enum CassettVal {
+            CASSETT_VAL50 {
+                public int checkSum(int numberOfBills) {
+                    if (numberOfBills < 2500 || numberOfBills > 0) {
+                        return numberOfBills * faceValue50;
+                    }
+                    else return 1;
+                }
+            },
+            CASSETT_VAL100 {
+                public int checkSum(int numberOfBills) {
+                    if (numberOfBills < 2500 || numberOfBills > 0) {
+                        return numberOfBills * faceValue100;
+                    }
+                    else return 1;
+                }
+            }
+            ,
+            CASSETT_VAL200 {
+                public int checkSum(int numberOfBills) {
+                    if (numberOfBills < 2500 || numberOfBills > 0) {
+                        return numberOfBills * faceValue200;
+                    }
+                    else return 1;
+                }
+
+            },
+            CASSETT_VAL500 {
+                public int checkSum(int numberOfBills) {
+                    if (numberOfBills < 2500 || numberOfBills > 0) {
+                        return numberOfBills * faceValue500;
+                    }
+                    else return 1;
+                }
+            };
+
+            public abstract int checkSum(int x);
+    }
+
+}
