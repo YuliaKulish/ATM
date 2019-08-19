@@ -1,0 +1,44 @@
+ /**Шестое домашнее задание в рамках курса Java для  начинающих.
+  * Проект банкомат-терминал.
+  * Печать чека после снятия средств.
+  * Подразумевается, что предложение клиенту распечатать чек появляется на экране только после
+  * успешного снятия, поэтому в данном случае проверка на наличие успешной операции не осущетсвляется
+  */
+
+public class Printer {
+     /**Наличие кассовой ленты
+      */
+     private boolean checkTape;
+     /**Количество возможных чеков из 1 кассовой ленты
+      */
+     short numberOfChecks = 2500;
+
+     /**Проверка наличия кассовой ленты
+      * @return печать чека
+      */
+     public boolean paperCheck() {
+         if (checkTape == true) {
+             return PrintCheck();
+         } else return false;
+     }
+
+     /**Метод печати чека
+      * @return печать чека
+      */
+     public boolean PrintCheck() {
+         return true;
+     }
+
+     /**Счетчик распечатанных чеков
+      * @return остаток бумаги
+      */
+     public int checksLeft() {
+         if (PrintCheck() == true) {
+             while (numberOfChecks > 0) {
+                 numberOfChecks--;
+                 return numberOfChecks;
+             }
+         }
+         return 0;
+     }
+ }
