@@ -1,0 +1,121 @@
+/**Шестое домашнее задание в рамках курса Java для  начинающих.
+ * Проект банкомат-терминал.
+ * Класс описывает сущность "карта", его свойства и валидацию имеющихся данных, в этом случае.
+ * @author Kulish Yulia
+ * @version 1.0
+ */
+
+public class Card {
+    /**
+     * Справочник платежных систем которые доступны для работы в банкомате
+     */
+    private final String [] directoryPaymentsSystem = {"MASTERCARD", "VISA", "DINNERSCLUB", "AMIRICANEXPRESS", "JCBCARD"};
+    /**Платежная система карты
+     */
+    private String paymentSystem;
+    /**Номер картs
+     */
+    private String cardMumber;
+    /**PIN карты
+     */
+    private int pinCard;
+    /**Срок действия карты
+     */
+    private int validityCard;
+    /**Минимальная длина номера карты
+     */
+    private final int minNumCardLength = 13;
+    /**Максимальная длина карты
+     */
+    private final int maxNumCardLength = 19;
+    /**Длина PIN
+     */
+    private final byte pinCardLength = 3;
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "paymentSystem='" + paymentSystem + '\'' +
+                ", cardMumber='" + cardMumber + '\'' +
+                ", pinCard=" + pinCard +
+                ", validityCard=" + validityCard +
+                '}';
+    }
+
+    /**Конструктор класса "Card"
+     * @param paymentSystem платежная система карты.
+     * @param cardMumber номер карты.
+     * @param pinCard PIN карты.
+     * @param validityCard срок действия карты (мог бы здесь быть...)
+     */
+    public Card(String paymentSystem, String cardMumber, int pinCard, int validityCard) {
+        this.paymentSystem = paymentSystem;
+        this.cardMumber = cardMumber;
+        this.pinCard = pinCard;
+        this.validityCard = validityCard;
+    }
+
+    /**Наш банкомат может работать с картами платежных систем
+     * указанных в справочнике
+     * @param paymentSystem платежная система используемой карты
+     * @return результат проверки наличия платежной системы в справочнике и присвоение значения
+     */
+    private String checkPaymentSystem(String paymentSystem) {
+        paymentSystem.toUpperCase();
+        for (int i = 0; i < directoryPaymentsSystem.length; i++) {
+            if (paymentSystem.equals(directoryPaymentsSystem[i])) {
+                return this.paymentSystem = paymentSystem;
+            }
+            else return String.valueOf(false);
+        }
+        return String.valueOf(false);
+    }
+
+    /**Проверка номера длины номера карты
+     * @param cardMumber номер карты
+     * @return результат проверки длины номера карты на соответствие заданным параметрам
+     */
+    private String checkNumCard(String cardMumber) {
+        char[] convertNumCard = cardMumber.toCharArray();
+        for (int i = 0; i < convertNumCard.length; i++) {
+            if (convertNumCard.length < minNumCardLength || convertNumCard.length > maxNumCardLength) {
+                return String.valueOf(false);
+            } else return this.cardMumber=cardMumber;
+        }
+        return String.valueOf(false);
+    }
+
+    /**Проверка количества символов введенного пинкода
+     * путем преобразования числа в массив и сравнения количества
+     * элементов массива с заданной длиной - 3.
+     * @param pinCard
+     * @return 1 в случае ошибки и 0 в случае корректного завершения проверки.
+     */
+    private int checkPinCardLength(int pinCard) {
+        char[] pinCheck = Integer.toString(pinCard).toCharArray();
+        for (int i = 0; i < pinCheck.length; i++) {
+            if (pinCheck.length < pinCardLength) {
+                return 0;
+            }
+            else return 1;
+            }
+        return pinCard;
+        }
+
+    public String getPaymentSystem() {
+        return paymentSystem;
+    }
+
+    public String getCardMumber() {
+        return cardMumber;
+    }
+
+    public int getPinCard() {
+        return pinCard;
+    }
+
+    public int getValidityCard() {
+        return validityCard;
+    }
+
+}
